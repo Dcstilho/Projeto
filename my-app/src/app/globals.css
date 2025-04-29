@@ -1,0 +1,186 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.Container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+
+.add-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.add-button:hover {
+  background-color: #45a049;
+}
+
+.Topo-Explicativo {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.Topo-Explicativo > div {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  min-width: 250px;
+}
+
+
+.Topo-Explicativo .titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Topo-Explicativo h2 {
+  font-size: 18px;
+  color: #333;
+}
+
+
+.Balanço {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.Analise-Categorias {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.Analise, .Categorias {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  min-width: 250px;
+}
+
+
+.Transacoes {
+  margin-top: 30px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Topo-Explicativo .Entradas {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Topo-Explicativo  .titulo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.Topo-Explicativo  h2 {
+  font-size: 16px;
+  color: #333;
+  align-self: flex-start; /* Alinha o título à esquerda */
+  margin: 0;
+}
+
+.Topo-Explicativo  .add-button {
+  align-self: flex-end; /* Alinha o botão à direita */
+  margin-top: -20px; /* Ajuste para o botão ficar no topo */
+  font-size: 10px; /* Tamanho da fonte ajustado */
+  width: 24px; /* Tamanho reduzido */
+  height: 24px; /* Tamanho reduzido */
+  padding: 0; /* Remove o padding para garantir o tamanho */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Tornar o botão redondo */
+  border: 1px solid #333; /* Cor de borda */
+  cursor: pointer;
+}
+
+.Topo-Explicativo  p {
+  margin: 10px 0;
+  font-size: 28px;
+}
+
+.Topo-Explicativo .Entradas .valor {
+  
+  font-weight: bold;
+  color: #0ee467;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.Topo-Explicativo .Saidas .valor {
+
+  font-weight: bold;
+  color: #e40e0e;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.Topo-Explicativo .descricao {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+
