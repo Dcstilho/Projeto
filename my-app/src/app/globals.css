@@ -1,10 +1,8 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 
 .Container {
   font-family: Arial, sans-serif;
@@ -12,7 +10,6 @@
   background-color: #f4f4f4;
   min-height: 100vh;
 }
-
 
 header {
   display: flex;
@@ -27,7 +24,6 @@ header {
 header h1 {
   font-size: 24px;
 }
-
 
 .add-button {
   background-color: #4CAF50;
@@ -65,7 +61,6 @@ header h1 {
   min-width: 250px;
 }
 
-
 .Topo-Explicativo .titulo {
   display: flex;
   align-items: center;
@@ -77,7 +72,6 @@ header h1 {
   color: #333;
 }
 
-
 .Balanço {
   background-color: white;
   padding: 20px;
@@ -88,7 +82,6 @@ header h1 {
   justify-content: center;
   align-items: center;
 }
-
 
 .Analise-Categorias {
   display: flex;
@@ -104,7 +97,6 @@ header h1 {
   width: 100%;
   min-width: 250px;
 }
-
 
 .Transacoes {
   margin-top: 30px;
@@ -126,7 +118,7 @@ header h1 {
   justify-content: space-between;
 }
 
-.Topo-Explicativo  .titulo {
+.Topo-Explicativo .titulo {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -134,53 +126,175 @@ header h1 {
   height: 100%;
 }
 
-.Topo-Explicativo  h2 {
+.Topo-Explicativo h2 {
   font-size: 16px;
   color: #333;
-  align-self: flex-start; /* Alinha o título à esquerda */
+  align-self: flex-start;
   margin: 0;
 }
 
-.Topo-Explicativo  .add-button {
-  align-self: flex-end; /* Alinha o botão à direita */
-  margin-top: -20px; /* Ajuste para o botão ficar no topo */
-  font-size: 10px; /* Tamanho da fonte ajustado */
-  width: 24px; /* Tamanho reduzido */
-  height: 24px; /* Tamanho reduzido */
-  padding: 0; /* Remove o padding para garantir o tamanho */
+.Topo-Explicativo .add-button {
+  align-self: flex-end;
+  margin-top: -20px;
+  font-size: 10px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%; /* Tornar o botão redondo */
-  border: 1px solid #333; /* Cor de borda */
+  border-radius: 50%;
+  border: 1px solid #333;
   cursor: pointer;
 }
 
-.Topo-Explicativo  p {
+.Topo-Explicativo p {
+  font-weight: bold;
   margin: 10px 0;
   font-size: 28px;
 }
 
 .Topo-Explicativo .Entradas .valor {
   
-  font-weight: bold;
   color: #0ee467;
   text-align: center;
   margin-top: 10px;
 }
 
 .Topo-Explicativo .Saidas .valor {
-
-  font-weight: bold;
+  
   color: #e40e0e;
   text-align: center;
   margin-top: 10px;
 }
 
 .Topo-Explicativo .descricao {
+  font-weight: normal;
   font-size: 14px;
   color: #666;
   text-align: center;
 }
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.modal input {
+  display: block;
+  margin: 10px 0;
+  padding: 6px;
+  width: 100%;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Balanço .valor {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 28px; 
+}
+
+.valor.negativo {
+  color: #e40e0e;
+}
+
+.valor.positivo {
+  color: #0ee467;
+}
+
+.Container-Transacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.Transacao {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+.modal input {
+  display: block;
+  margin: 10px 0 20px;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.modal input:focus {
+  border-color: #4CAF50;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-buttons .confirm {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.modal-buttons .confirm:hover {
+  background-color: #45a049;
+}
+
+.modal-buttons .cancel {
+  background-color: #ccc;
+  color: #333;
+}
+
+.modal-buttons .cancel:hover {
+  background-color: #bbb;
+}
