@@ -4,19 +4,20 @@ import React, { useState } from 'react';
 
 type Props = {
   tipo: 'entrada' | 'saida';
-  onAdicionar: (valor: number, descricao: string) => void;
+  onAdicionar: (valor: number, descricao: string, categoria: string | null) => void;
 };
 
 const AddValor = ({ tipo, onAdicionar }: Props) => {
   const [modalAberto, setModalAberto] = useState(false);
   const [valor, setValor] = useState<number>(0);
   const [descricao, setDescricao] = useState('');
-
+  const [categoria, setCategoria] = useState('alimentação'); 
   const abrirModal = () => setModalAberto(true);
   const fecharModal = () => {
     setModalAberto(false);
     setValor(0);
     setDescricao('');
+    setCategoria('alimentação'); 
   };
 
   const handleSalvar = () => {
@@ -25,7 +26,11 @@ const AddValor = ({ tipo, onAdicionar }: Props) => {
       return;
     }
     const valorFinal = tipo === 'saida' ? -Math.abs(valor) : Math.abs(valor);
-    onAdicionar(Math.abs(valorFinal), descricao);
+    onAdicionar(
+      Math.abs(valorFinal),
+      descricao,
+      tipo === 'entrada' ? null : categoria 
+    );
     fecharModal();
   };
 
@@ -52,6 +57,15 @@ const AddValor = ({ tipo, onAdicionar }: Props) => {
               onChange={(e) => setDescricao(e.target.value)}
               placeholder="Descrição"
             />
+            {tipo === 'saida' && (
+              <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
+                <option value="alimentação">Alimentação</option>
+                <option value="transporte">Transporte</option>
+                <option value="saúde">Saúde</option>
+                <option value="lazer">Lazer</option>
+                <option value="contas">Contas</option>
+              </select>
+            )}
             <div className="modal-buttons">
               <button className="confirm" onClick={handleSalvar}>Salvar</button>
               <button className="cancel" onClick={fecharModal}>Cancelar</button>
