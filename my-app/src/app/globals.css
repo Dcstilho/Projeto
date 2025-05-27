@@ -7,7 +7,7 @@
 .Container {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #1e1e1e;
   min-height: 100vh;
 }
 
@@ -15,8 +15,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  color: white;
+  background-color: #2d2d2d;
+  color: #f0f0f0;
   padding: 15px;
   border-radius: 8px;
 }
@@ -27,7 +27,7 @@ header h1 {
 
 .add-button {
   background-color: #4CAF50;
-  color: white;
+  color: #f0f0f0;
   padding: 10px;
   border-radius: 50%;
   font-size: 20px;
@@ -53,10 +53,10 @@ header h1 {
 }
 
 .Topo-Explicativo > div {
-  background-color: white;
+  background-color: #2d2d2d;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
   width: 100%;
   min-width: 250px;
 }
@@ -69,14 +69,14 @@ header h1 {
 
 .Topo-Explicativo h2 {
   font-size: 18px;
-  color: #333;
+  color: #f0f0f0;
 }
 
 .Balanço {
-  background-color: white;
+  background-color: #2d2d2d;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
   min-width: 250px;
   display: flex;
   justify-content: center;
@@ -90,27 +90,27 @@ header h1 {
 }
 
 .Analise, .Categorias {
-  background-color: white;
+  background-color: #2d2d2d;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
   width: 100%;
   min-width: 250px;
 }
 
 .Transacoes {
   margin-top: 30px;
-  background-color: white;
+  background-color: #2d2d2d;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
 }
 
 .Topo-Explicativo .Entradas {
-  background-color: white;
+  background-color: #2d2d2d;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
   width: 100%;
   min-width: 250px;
   display: flex;
@@ -128,7 +128,7 @@ header h1 {
 
 .Topo-Explicativo h2 {
   font-size: 16px;
-  color: #333;
+  color: #f0f0f0;
   align-self: flex-start;
   margin: 0;
 }
@@ -144,7 +144,7 @@ header h1 {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: 1px solid #333;
+  border: 1px solid #f0f0f0;
   cursor: pointer;
 }
 
@@ -155,14 +155,12 @@ header h1 {
 }
 
 .Topo-Explicativo .Entradas .valor {
-  
   color: #0ee467;
   text-align: center;
   margin-top: 10px;
 }
 
 .Topo-Explicativo .Saidas .valor {
-  
   color: #e40e0e;
   text-align: center;
   margin-top: 10px;
@@ -171,7 +169,7 @@ header h1 {
 .Topo-Explicativo .descricao {
   font-weight: normal;
   font-size: 14px;
-  color: #666;
+  color: #aaa;
   text-align: center;
 }
 
@@ -189,10 +187,11 @@ header h1 {
 }
 
 .modal {
-  background: white;
+  background: #2d2d2d;
   padding: 20px;
   border-radius: 8px;
   width: 300px;
+  color: #f0f0f0;
 }
 
 .modal input {
@@ -200,6 +199,9 @@ header h1 {
   margin: 10px 0;
   padding: 6px;
   width: 100%;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #444;
 }
 
 .modal-buttons {
@@ -211,7 +213,7 @@ header h1 {
   font-weight: bold;
   text-align: center;
   margin-top: 10px;
-  font-size: 28px; 
+  font-size: 28px;
 }
 
 .valor.negativo {
@@ -233,18 +235,18 @@ header h1 {
   display: flex;
   justify-content: space-between;
   padding: 10px 15px;
-  background-color: #f9f9f9;
+  background-color: #292929;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05);
 }
 
 .modal {
-  background-color: white;
+  background-color: #2d2d2d;
   padding: 20px;
   border-radius: 8px;
   width: 100%;
   max-width: 320px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
   font-family: Arial, sans-serif;
 }
 
@@ -254,10 +256,12 @@ header h1 {
   padding: 10px;
   font-size: 14px;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
   border-radius: 6px;
   outline: none;
   transition: border 0.2s ease;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
 }
 
 .modal input:focus {
@@ -305,12 +309,12 @@ header h1 {
   padding: 10px;
   font-size: 14px;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
   border-radius: 6px;
   outline: none;
   transition: border 0.2s ease;
-  background-color: white;
-  color: #333;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
 }
 
 .modal select:focus {
@@ -319,7 +323,8 @@ header h1 {
 
 .Transacao.header {
   font-weight: bold;
-  background-color: #eaeaea;
+  background-color: #333;
+  color: #f0f0f0;
 }
 
 .Transacao p {
@@ -328,11 +333,12 @@ header h1 {
 
 .Categorias .header {
   font-weight: bold;
-  background-color: #eaeaea;
+  background-color: #333;
   padding: 10px 15px;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
+  color: #f0f0f0;
 }
 
 .Categorias ul {
@@ -344,11 +350,19 @@ header h1 {
   display: flex;
   justify-content: space-between;
   padding: 10px 15px;
-  background-color: #f9f9f9;
+  background-color: #292929;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05);
+  color: #f0f0f0;
 }
 
 .Categorias li strong {
+  font-weight: bold;
+}
+
+.Analise h2,
+.Categorias h2,
+.Transacoes h2, p {
+  color: #f0f0f0;
   font-weight: bold;
 }
