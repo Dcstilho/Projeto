@@ -2,14 +2,31 @@
 
 import React, { useState } from 'react';
 import AddValor from './components/AddValor';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+  Cell,
+} from 'recharts';
 
 type Transacao = {
   valor: number;
   descricao: string;
-  categoria: string | null; 
+  categoria: string | null;
 };
 
 const categoriasFixas = ['alimentação', 'transporte', 'saúde', 'lazer', 'contas'];
+const coresCategorias: Record<string, string> = {
+  alimentação: '#FF6384',
+  transporte: '#36A2EB',
+  saúde: '#FFCE56',
+  lazer: '#4BC0C0',
+  contas: '#9966FF',
+};
 
 const Home = () => {
   const [entradas, setEntradas] = useState(0);
@@ -19,28 +36,32 @@ const Home = () => {
   const adicionarTransacao = (
     valor: number,
     descricao: string,
-    categoria: string | null,  
+    categoria: string | null,
     tipo: 'entrada' | 'saida'
   ) => {
     const valorCorrigido = tipo === 'saida' ? -Math.abs(valor) : Math.abs(valor);
-
     setTransacoes((prev) => [...prev, { valor: valorCorrigido, descricao, categoria }]);
-
-    if (tipo === 'entrada') {
-      setEntradas((e) => e + valorCorrigido);
-    } else {
-      setSaidas((s) => s + valorCorrigido);
-    }
+    if (tipo === 'entrada') setEntradas((e) => e + valorCorrigido);
+    else setSaidas((s) => s + valorCorrigido);
   };
 
   const balanco = entradas + saidas;
 
+  // Apenas somando saídas por categoria
   const totaisPorCategoria: Record<string, number> = {};
   transacoes.forEach((t) => {
-    if (t.valor < 0 && t.categoria) {  
+    if (t.valor < 0 && t.categoria) {
       totaisPorCategoria[t.categoria] = (totaisPorCategoria[t.categoria] || 0) + Math.abs(t.valor);
     }
   });
+
+  const dadosBarra = categoriasFixas
+    .map((cat) => ({
+      name: cat,
+      valor: totaisPorCategoria[cat] || 0,
+      cor: coresCategorias[cat],
+    }))
+    .filter((d) => d.valor > 0);
 
   return (
     <main className="Container">
@@ -54,8 +75,8 @@ const Home = () => {
             <h2>Entradas</h2>
             <AddValor
               tipo="entrada"
-              onAdicionar={(valor, descricao, categoria) =>
-                adicionarTransacao(valor, descricao, categoria, 'entrada')
+              onAdicionar={(valor, descricao) =>
+                adicionarTransacao(valor, descricao, null, 'entrada')
               }
             />
             <p className="valor">R$ {entradas.toFixed(2)}</p>
@@ -88,8 +109,24 @@ const Home = () => {
 
       <div className="Analise-Categorias">
         <div className="Analise">
-          <h2>Análise</h2>
+          <h2>Gastos por Categoria</h2>
+          <div style={{ width: '100%', height: 300 }}>
+            <ResponsiveContainer>
+              <BarChart data={dadosBarra}>
+                <XAxis dataKey="name" stroke="#f0f0f0" />
+                <YAxis stroke="#f0f0f0" />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="valor">
+                  {dadosBarra.map((entry, index) => (
+                    <Cell key={index} fill={entry.cor} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
+
         <div className="Categorias">
           <h2>Categorias</h2>
           <div className="header">
@@ -116,7 +153,7 @@ const Home = () => {
           </div>
           {transacoes.map((t, i) => (
             <div key={i} className="Transacao">
-              <p className="categoria">{t.categoria || 'Sem categoria'}</p> 
+              <p className="categoria">{t.categoria || 'Sem categoria'}</p>
               <p>{t.descricao}</p>
               <p className={`valor ${t.valor < 0 ? 'negativo' : 'positivo'}`}>
                 R$ {Math.abs(t.valor).toFixed(2)}

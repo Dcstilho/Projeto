@@ -11,13 +11,14 @@ const AddValor = ({ tipo, onAdicionar }: Props) => {
   const [modalAberto, setModalAberto] = useState(false);
   const [valor, setValor] = useState<number>(0);
   const [descricao, setDescricao] = useState('');
-  const [categoria, setCategoria] = useState('alimentação'); 
+  const [categoria, setCategoria] = useState('alimentação');
+
   const abrirModal = () => setModalAberto(true);
   const fecharModal = () => {
     setModalAberto(false);
     setValor(0);
     setDescricao('');
-    setCategoria('alimentação'); 
+    setCategoria('alimentação');
   };
 
   const handleSalvar = () => {
@@ -29,7 +30,7 @@ const AddValor = ({ tipo, onAdicionar }: Props) => {
     onAdicionar(
       Math.abs(valorFinal),
       descricao,
-      tipo === 'entrada' ? null : categoria 
+      tipo === 'entrada' ? null : categoria
     );
     fecharModal();
   };
@@ -49,7 +50,7 @@ const AddValor = ({ tipo, onAdicionar }: Props) => {
               placeholder="Valor"
               inputMode="decimal"
               step="any"
-              onWheel={(e) => (e.target as HTMLInputElement).blur()} 
+              onWheel={(e) => (e.target as HTMLInputElement).blur()}
             />
             <input
               type="text"
