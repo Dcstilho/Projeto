@@ -17,6 +17,8 @@ type Transacao = {
   valor: number;
   descricao: string;
   categoria: string | null;
+  banco: string;
+  data: Date;
 };
 
 const categoriasFixas = ['alimentação', 'transporte', 'saúde', 'lazer', 'contas'];
@@ -37,17 +39,25 @@ const Home = () => {
     valor: number,
     descricao: string,
     categoria: string | null,
-    tipo: 'entrada' | 'saida'
+    banco: string
   ) => {
-    const valorCorrigido = tipo === 'saida' ? -Math.abs(valor) : Math.abs(valor);
-    setTransacoes((prev) => [...prev, { valor: valorCorrigido, descricao, categoria }]);
-    if (tipo === 'entrada') setEntradas((e) => e + valorCorrigido);
-    else setSaidas((s) => s + valorCorrigido);
+    const tipo = valor < 0 ? 'saida' : 'entrada';
+    const novaTransacao: Transacao = {
+      valor,
+      descricao,
+      categoria,
+      banco,
+      data: new Date(),
+    };
+
+    setTransacoes((prev) => [novaTransacao, ...prev]); // últimas inseridas primeiro
+
+    if (tipo === 'entrada') setEntradas((e) => e + valor);
+    else setSaidas((s) => s + valor);
   };
 
   const balanco = entradas + saidas;
 
-  // Apenas somando saídas por categoria
   const totaisPorCategoria: Record<string, number> = {};
   transacoes.forEach((t) => {
     if (t.valor < 0 && t.categoria) {
@@ -75,8 +85,8 @@ const Home = () => {
             <h2>Entradas</h2>
             <AddValor
               tipo="entrada"
-              onAdicionar={(valor, descricao) =>
-                adicionarTransacao(valor, descricao, null, 'entrada')
+              onAdicionar={(valor, descricao, _categoria, banco) =>
+                adicionarTransacao(valor, descricao, null, banco)
               }
             />
             <p className="valor">R$ {entradas.toFixed(2)}</p>
@@ -89,8 +99,8 @@ const Home = () => {
             <h2>Saídas</h2>
             <AddValor
               tipo="saida"
-              onAdicionar={(valor, descricao, categoria) =>
-                adicionarTransacao(valor, descricao, categoria, 'saida')
+              onAdicionar={(valor, descricao, categoria, banco) =>
+                adicionarTransacao(-Math.abs(valor), descricao, categoria, banco)
               }
             />
             <p className="valor">R$ {Math.abs(saidas).toFixed(2)}</p>
@@ -147,14 +157,18 @@ const Home = () => {
         <h2>Transações</h2>
         <div className="Container-Transacoes">
           <div className="Transacao header">
+            <p><strong>Data</strong></p>
             <p><strong>Categoria</strong></p>
             <p><strong>Descrição</strong></p>
+            <p><strong>Banco</strong></p>
             <p><strong>Valor</strong></p>
           </div>
           {transacoes.map((t, i) => (
             <div key={i} className="Transacao">
+              <p>{t.data.toLocaleDateString('pt-BR')} {t.data.toLocaleTimeString('pt-BR')}</p>
               <p className="categoria">{t.categoria || 'Sem categoria'}</p>
               <p>{t.descricao}</p>
+              <p>{t.banco || '-'}</p>
               <p className={`valor ${t.valor < 0 ? 'negativo' : 'positivo'}`}>
                 R$ {Math.abs(t.valor).toFixed(2)}
               </p>

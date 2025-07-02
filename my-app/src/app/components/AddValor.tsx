@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 type Props = {
   tipo: 'entrada' | 'saida';
-  onAdicionar: (valor: number, descricao: string, categoria: string | null) => void;
+  onAdicionar: (valor: number, descricao: string, categoria: string | null, banco: string) => void;
 };
 
 const AddValor = ({ tipo, onAdicionar }: Props) => {
@@ -12,6 +12,7 @@ const AddValor = ({ tipo, onAdicionar }: Props) => {
   const [valor, setValor] = useState<number>(0);
   const [descricao, setDescricao] = useState('');
   const [categoria, setCategoria] = useState('alimentação');
+  const [banco, setBanco] = useState('');
 
   const abrirModal = () => setModalAberto(true);
   const fecharModal = () => {
@@ -19,6 +20,7 @@ const AddValor = ({ tipo, onAdicionar }: Props) => {
     setValor(0);
     setDescricao('');
     setCategoria('alimentação');
+    setBanco('');
   };
 
   const handleSalvar = () => {
@@ -30,7 +32,8 @@ const AddValor = ({ tipo, onAdicionar }: Props) => {
     onAdicionar(
       Math.abs(valorFinal),
       descricao,
-      tipo === 'entrada' ? null : categoria
+      tipo === 'entrada' ? null : categoria,
+      banco
     );
     fecharModal();
   };
@@ -67,6 +70,12 @@ const AddValor = ({ tipo, onAdicionar }: Props) => {
                 <option value="contas">Contas</option>
               </select>
             )}
+            <input
+              type="text"
+              value={banco}
+              onChange={(e) => setBanco(e.target.value)}
+              placeholder="Banco"
+            />
             <div className="modal-buttons">
               <button className="confirm" onClick={handleSalvar}>Salvar</button>
               <button className="cancel" onClick={fecharModal}>Cancelar</button>
